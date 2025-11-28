@@ -30,7 +30,7 @@
 
 stb r0, 0x9 (r30)                                       # Original instruction
 
-# Everything below is a copy of code that already exits in-game (at address 806a9d0c in the PAL version), modified for compatiblity with the Gecko Code Loader. As such, documentation will be pretty sparse or inaccurate.
+# Everything below is a copy of code that already exits in-game (at address 806a9d0c in the PAL version), modified for compatibility with the Gecko Code Loader. As such, documentation will be pretty sparse or inaccurate.
 
 # Call the function "KartObjectProxy::getSnd."
 lwz r3, 0x0118 (r30)                                    # Load the function argument.
