@@ -1,4 +1,4 @@
-## Play the Shock State Sound After Getting Hit by Koopa Zappers
+## Play the Shock State Sound When Hit by Koopa Zappers
 
 This is a gecko code that fixes a bug where if the player is hit by the Koopa Zapper object, the shock state sound that normally accompanies the shock state effect isn't played.
 
