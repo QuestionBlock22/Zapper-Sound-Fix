@@ -1,4 +1,4 @@
-# Play the Shock State Sound When Hit By Koopa Zappers (QB22)
+# Play the Shock State Sound When Hit by Koopa Zappers (QB22)
 
 # Inject @
 # PAL   : 806aa1ac
