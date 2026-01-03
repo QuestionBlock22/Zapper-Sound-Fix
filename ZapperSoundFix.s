@@ -1,5 +1,7 @@
 # Play the Shock State Sound When Hit by Koopa Zappers (QB22)
 
+# Optimized by Vega.
+
 # Inject @
 # PAL   : 806aa1ac
 # NTSC-U: 806a5d24
@@ -24,33 +26,27 @@
     .set getSnd, 0x8057E7EC
     .set floatBase, 0x8089
     .set floatArg, -0x4500
-.else # Invalid Region
+.else
     .err
 .endif
 
-stb r0, 0x9 (r30)                                       # Original instruction
+# Set the upper bits of the function "KartObjectProxy::getSnd."
+lis r12, getSnd@h
 
-# Everything below is a copy of code that already exits in-game (at address 806a9d0c in the PAL version), modified for compatibility with the Gecko Code Loader. As such, documentation will be pretty sparse or inaccurate.
+# Original instruction
+stb r0, 0x9 (r30)
 
-# Call the function "KartObjectProxy::getSnd."
-lwz r3, 0x0118 (r30)                                    # Load the function argument.
-mflr r14                                                # Backup the link register.
-lis r15, getSnd@h
-ori r15, r15, getSnd@l
-mtlr r15
-blrl
-mtlr r14                                                # Restore the link register.
-
-lwz r12, 0 (r3)                                         # Load base address from register 3.
-lis r4, floatBase
-lfs f1, floatArg (r4)
-
-# Load the sound ID for the shock state sound effect.
-li r4, 0x117
-
-# Call the function that will playback the sound.
-mfctr r14                                               # Backup the count register
-lwz r12, 0x00E8 (r12)                                   # Load a pointer.
+# Call the function.
+ori r12, r12, getSnd@l
+lwz r3, 0x118 (r30)
 mtctr r12
 bctrl
-mtctr r14                                               # Restore the count register.
+
+# Load the sound ID for the shock state sound effect and call the sound playback function.
+lis r4, floatBase
+lwz r12, 0 (r3)
+lfs f1, floatArg (r4)
+lwz r12, 0x00E8 (r12)
+li r4, 0x117
+mtctr r12
+bctrl
