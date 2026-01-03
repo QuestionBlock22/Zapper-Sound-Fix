@@ -7,4 +7,5 @@ Assemble this code using PyiiASMH or CodeWrite
 ### Credits:
 
 * MelgMKW, Brawlboxgaming - [Pulsar](https://www.github.com/MelgMKW/Pulsar), used as reference.
+* Vega - Optimization and additional help.
 * Ghidra Project - Function Names and Symbol Map
